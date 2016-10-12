@@ -9,10 +9,14 @@
   </head>
   <body>
     <%= render "layouts/navbars/main_bar" %>
-    <div class="container">
-      <div class="push-down">
-        <%= yield %>
-      </div>
+    <div class="container push-down">
+      <% if notice %>
+        <p class="notice alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <%= yield %>
     </div>
   </body>
 </html>
