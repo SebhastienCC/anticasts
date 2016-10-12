@@ -20,3 +20,19 @@
     <p>You are about 45% done with the course.</p>
   </li>
 </ul>
+<br>
+<h2>Course Outline</h2>
+<hr class="m-y-2">
+<ul class="list-group">
+  <% @sections.each do |s| %>
+  <li class="list-group-item">
+    <h5><%= s.title %></h5>
+    <p><%= s.description %></p>
+    <ol>
+      <% @lessons.where(section_id: s.id).each do |l| %>
+        <li><%= link_to l.title, l %> - <%= l.description %></li>
+      <% end %>
+    </ol>
+  </li>
+  <% end %>
+</ul>

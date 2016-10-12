@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Lesson.create(title: "Typography", description: "Learn how to write in HTML", section_id: 1, course_id: 1, order: 1, video_link: "https://vimeo.com/186517148")
+Lesson.create(title: "Divs and Spans", description: "Learn how to worganize in HTML", section_id: 1, course_id: 1, order: 2, video_link: "https://vimeo.com/186517148")
+Lesson.create(title: "Box Model", description: "Learn how to use the box model in CSS", section_id: 2, course_id: 1, order: 1,  video_link: "https://vimeo.com/186517148")
