@@ -1,17 +1,17 @@
-<h1>My Courses</h1>
+<h1>All Anticast Courses</h1>
 <hr class="m-y-2">
 <div class="row">
-    <% @seats.each do |c| %>
+    <% @courses.each do |c| %>
     <div class="offset-md-3 col-md-6">
         <div class="card text-xs-center">
             <img class="card-img-top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/517/thumb_Intellegent_business_planning.jpg" alt="Card image cap">
             <div class="card-block">
-                <h4 class="card-title"><%= Course.find(c.course_id).title %></h4>
-                <p class="card-text"><%= Course.find(c.course_id).description %></p>
-                <%= link_to 'Go to Course', course_path(c.course_id), class: 'btn btn-primary' %>
+                <h4 class="card-title"><%= c.title %></h4>
+                <p class="card-text"><%= c.description %></p>
+                <%= link_to 'Register For This Course', new_course_seat_path(c), class: 'btn btn-primary' %>
             </div>
             <div class="card-footer text-muted">
-                Last worked on: 2 days ago
+                Join 402 Students !
             </div>
         </div>
     </div>

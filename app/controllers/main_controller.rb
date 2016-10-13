@@ -9,6 +9,6 @@ class MainController < ApplicationController
     if !user_signed_in?
       redirect_to root_path
     end
-    @courses = Course.all
+    @seats = Seat.where(user_id: current_user.id)
   end
 end
