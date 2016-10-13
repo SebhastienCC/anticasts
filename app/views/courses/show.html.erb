@@ -36,3 +36,5 @@
   </li>
   <% end %>
 </ul>
+
+<%= link_to "Unregister", course_seat_path(@course, @seat.ids), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are You sure?'} %>

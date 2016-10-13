@@ -1,4 +1,6 @@
 class SeatsController < ApplicationController
+  before_action :find_seat, except: [:index, :create, :new]
+
   def index
   end
   def new
@@ -16,8 +18,15 @@ class SeatsController < ApplicationController
       render 'new'
     end
   end
+  def destroy
+		@seat.destroy
+		redirect_to dashboard_path
+  end
   private
   def seat_params
     params.require(:seat).permit(:course_id, :user_id)
+  end
+  def find_seat
+    @seat = Seat.find(params[:id])
   end
 end
