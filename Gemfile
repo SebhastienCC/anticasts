@@ -19,6 +19,15 @@ gem 'coffee-rails', '~> 4.2'
 # Use Devise for User Authentication
 gem 'devise'
 
+# Use Figaro to keep configuration information out of Git
+gem "figaro"
+
+# Use payola to integrate with Stripe
+gem 'payola-payments'
+
+# Use Stripe to accept user payments
+gem 'stripe', '~> 1.55'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
