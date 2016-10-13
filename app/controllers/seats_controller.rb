@@ -7,6 +7,8 @@ class SeatsController < ApplicationController
     @course = Course.find(params[:course_id])
     @seat = Seat.new
 
+    @subscription = Payola::Subscription.where(owner_id: current_user.id, state: "active")
+
     @sections = Section.where(course_id: @course.id).order(:order)
     @lessons = Lesson.where(course_id: @course.id)
   end

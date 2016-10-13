@@ -1,10 +1,18 @@
 Payola.configure do |config|
+  Payola.secret_key = Figaro.env.stripe_api_key
+  Payola.publishable_key = Figaro.env.stripe_publishable_key
+
+  Payola.background_worker = lambda do |klass, *args|
+    klass.call(*args)
+  end
+
+  Payola.default_currency = 'usd'
   # Example subscription:
-  # 
+  #
   # config.subscribe 'payola.package.sale.finished' do |sale|
   #   EmailSender.send_an_email(sale.email)
   # end
-  # 
+  #
   # In addition to any event that Stripe sends, you can subscribe
   # to the following special payola events:
   #

@@ -3,12 +3,15 @@
   <p class="lead"><%= @course.description %></p>
   <hr class="m-y-2">
   <p class="lead">
+    <% if @subscription.ids != [] %>
+      <%= form_for :seat, url: course_seats_path do |f| %>
+        <%= f.hidden_field :course_id, value: params[:course_id] %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
 
-    <%= form_for :seat, url: course_seats_path do |f| %>
-      <%= f.hidden_field :course_id, value: params[:course_id] %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
-      <%= f.submit 'Register For Course', class: 'btn btn-primary btn-lg' %>
+        <%= f.submit 'Register For Course', class: 'btn btn-primary btn-lg' %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Sign Up For Anticasts to Get Access to this Course !', subscription_path('new') %>
     <% end %>
   </p>
 </div>

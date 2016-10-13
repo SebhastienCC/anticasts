@@ -1,3 +1,3 @@
 class Subscription < ApplicationRecord
-  include Payola::Sellable
+  include Payola::Plan
 end
