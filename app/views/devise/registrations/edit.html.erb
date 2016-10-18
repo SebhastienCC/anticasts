@@ -45,6 +45,7 @@
   <% end %>
 </h6>
 <h6>Status: <%= Payola::Subscription.where(owner_id: current_user.id).first.state.capitalize %></h6>
+
 <!-- <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p> -->

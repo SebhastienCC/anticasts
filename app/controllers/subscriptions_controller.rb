@@ -19,4 +19,15 @@ class SubscriptionsController < ApplicationController
     # Render the status json that Payola's javascript expects
     render_payola_status(subscription)
   end
+  # def cancel
+  #    if params[:guid].present?
+  #       @subscription = Payola::Subscription.find_by(:guid => params[:guid])
+  #       ***@***.***) if ***@***.***?
+  #       current_user.subscription_plan_id = nil
+  #       current_user.save
+  #       # UserMailer.unsubscribe_email(current_user).deliver_now
+  #       # flash.notice = "Subscription successfully cancelled"
+  #       redirect_to dashboard_path
+  #    end
+  #  end
 end
