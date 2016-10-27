@@ -1,0 +1,65 @@
+<h1><%= @quiz.title %></h1>
+<hr>
+<br>
+<ol>
+  <% @questions.each do |q| %>
+    <li><%= q.question %></li>
+    <ol type = "a">
+      <% q.answers.each do |a| %>
+        <li><input type="radio" name = '<%= q.id %>' value='<%= a[1] %>' id="q1a"><%= a[0] %></li>
+      <% end %>
+    </ol>
+  <% end %>
+</ol>
+<p id="resultLabel" style="display: none;"></p>
+<button id="submitButton" onclick="gradeQuiz(); this.style.display = 'none'">Submit</button>
+<button id="saveProgress" style="display: none;">Save Progress</button>
+
+<% content_for :javascript do %>
+<script type="text/javascript">
+
+    var saveProgress = document.getElementById('saveProgress');
+    var resultLabel = document.getElementById('resultLabel');
+
+    function gradeQuiz() {
+
+      var answers = [];
+
+      <% @questions.length.times do %>
+        answers.push(0);
+      <% end %>
+
+      <% @questions.each do |q| %>
+
+        var radios = document.getElementsByName('<%= q.id %>');
+
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                // do whatever you want with the checked radio
+                // alert(radios[i].value);
+                answers.push(radios[i].value)
+
+                // only one radio can be logically checked, don't check the rest
+                break;
+            }
+        }
+        <% end %>
+
+        var sum = answers.reduce(add, 0);
+
+        function add(a, b) {
+            return Number(a) + Number(b);
+        }
+
+        var grade = sum / <%= @questions.length %> * 100
+
+        console.log(grade);
+        console.log(answers);
+        saveProgress.style.display = 'block';
+        resultLabel.innerHTML = 'Your Score: ' + grade + "%";
+        resultLabel.style.display = 'block';
+
+    }
+
+</script>
+<% end %>

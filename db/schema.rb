@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018061618) do
+ActiveRecord::Schema.define(version: 20161019035151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,23 @@ ActiveRecord::Schema.define(version: 20161018061618) do
     t.text     "business_address"
     t.integer  "setup_fee"
     t.index ["guid"], name: "index_payola_subscriptions_on_guid", using: :btree
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "quiz_id"
+    t.text     "question"
+    t.text     "answers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "course_id"
+    t.integer  "section_id"
+    t.string   "title"
   end
 
   create_table "seats", force: :cascade do |t|
